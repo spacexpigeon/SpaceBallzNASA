@@ -1,0 +1,103 @@
+[gd_scene load_steps=19 format=3 uid="uid://ci7ys8qljakj2"]
+
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_golue"]
+[ext_resource type="Texture2D" uid="uid://qekx8na16vyk" path="res://Assets/Balling.png" id="2_4vgkq"]
+[ext_resource type="Texture2D" uid="uid://bfo6cinq5l8pt" path="res://Assets/kulka1.png" id="2_fwgps"]
+[ext_resource type="Texture2D" uid="uid://ctk4aukt1mef4" path="res://Assets/kulka2.png" id="3_m2pww"]
+[ext_resource type="Texture2D" uid="uid://cd2d3ilxib5tu" path="res://Assets/kulka3.png" id="4_ff82u"]
+[ext_resource type="Texture2D" uid="uid://bmdhd1g30rl4c" path="res://Assets/kulka4.png" id="5_qcso1"]
+[ext_resource type="Texture2D" uid="uid://dwtf6uib1ajqe" path="res://Assets/kulka.png" id="6_bb1ul"]
+[ext_resource type="Texture2D" uid="uid://di1x84l0m3t7k" path="res://Assets/kulka5.png" id="6_sfr65"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6fhp8"]
+radius = 32.0156
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxgh5"]
+atlas = ExtResource("2_4vgkq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_acrxu"]
+atlas = ExtResource("2_fwgps")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dvdy"]
+atlas = ExtResource("3_m2pww")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flip4"]
+atlas = ExtResource("4_ff82u")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24lni"]
+atlas = ExtResource("5_qcso1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ks8"]
+atlas = ExtResource("6_bb1ul")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjgk4"]
+atlas = ExtResource("6_sfr65")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7q8b"]
+atlas = ExtResource("6_sfr65")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5j8bs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxgh5")
+}],
+"loop": true,
+"name": &"ballin",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_acrxu")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6dvdy")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_flip4")
+}, {
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_24lni")
+}],
+"loop": true,
+"name": &"def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ks8")
+}],
+"loop": true,
+"name": &"og",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjgk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7q8b")
+}],
+"loop": true,
+"name": &"skin",
+"speed": 5.0
+}]
+
+[node name="Ball" type="CharacterBody2D"]
+script = ExtResource("1_golue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6fhp8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5j8bs")
+animation = &"skin"
+autoplay = "def"
